@@ -3,7 +3,7 @@ from canvas import Canvas
 from shapes import Rectangle, Circle
 
 class PaintApp:
-    def init(self):
+    def __init__(self):
         self.canvas = Canvas()
     def run(self):
         while (1):

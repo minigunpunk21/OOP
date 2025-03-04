@@ -1,5 +1,5 @@
 class Canvas:
-    def init(self):
+    def __init__(self):
         self.figures=[]
 
     def add_figure(self,figure):
