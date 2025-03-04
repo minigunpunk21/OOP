@@ -2,7 +2,7 @@ class Canvas:
     def init(self):
         self.figures=[]
 
-    def ass_figure(self,figure):
+    def add_figure(self,figure):
         self.figures.append(figure)
     
     def remove_figure(self, index):
