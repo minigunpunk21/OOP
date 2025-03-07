@@ -1,13 +1,30 @@
 from abc import ABC, abstractmethod
 
 class Figure(ABC):
-    def __init__(self,x,y):
-        self.x = x
-        self.y = y
+    def __init__(self, x: int, y: int) -> None:
+        self._x = x
+        self._y = y
+
+    @property
+    def x(self) -> int:
+        return self._x
+
+    @x.setter
+    def x(self, value: int) -> None:
+        self._x = value
+
+    @property
+    def y(self) -> int:
+        return self._y
+
+    @y.setter
+    def y(self, value: int) -> None:
+        self._y = value
 
     @abstractmethod
-    def draw(self):
-            pass
-    def move(self,new_x,new_y):
-        self.x=new_x
-        self.y=new_y
+    def draw(self, canvas) -> None:
+        pass
+
+    def move(self, dx: int, dy: int) -> None:
+        self._x += dx
+        self._y += dy
