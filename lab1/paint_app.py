@@ -1,5 +1,5 @@
-from canvas import Canvas
 from shapes import Rectangle, Circle, Triangle
+from canvas import Canvas
 from storage import Storage
 
 class PaintApp:
@@ -16,39 +16,55 @@ class PaintApp:
             elif command == "add rectangle":
                 try:
                     x, y, w, h = map(int, input("Enter x, y, width, height: ").split())
-                    self._canvas.add_figure(Rectangle(x, y, w, h))
+                    rect = Rectangle(x, y, w, h)
+                    self._canvas.add_figure(rect)
+                    print(f"Rectangle added at index: {len(self._canvas._figures) - 1}")
                 except Exception as e:
                     print("Ошибка ввода:", e)
             elif command == "add circle":
                 try:
                     x, y, r = map(int, input("Enter x, y, radius: ").split())
-                    self._canvas.add_figure(Circle(x, y, r))
+                    circle = Circle(x, y, r)
+                    self._canvas.add_figure(circle)
+                    print(f"Circle added at index: {len(self._canvas._figures) - 1}")
                 except Exception as e:
                     print("Ошибка ввода:", e)
             elif command == "add triangle":
                 try:
-                    x, y, base, height = map(int, input("Enter x, y, base, height: ").split())
-                    self._canvas.add_figure(Triangle(x, y, base, height))
+                    x, y, a, b, c = map(int, input("Enter x, y, side a, side b, side c: ").split())
+                    triangle = Triangle(x, y, a, b, c)
+                    self._canvas.add_figure(triangle)
+                    print(f"Triangle added at index: {len(self._canvas._figures) - 1}")
+                except Exception as e:
+                    print("Ошибка ввода:", e)
+            elif command == "fill":
+                try:
+                    index = int(input("Enter figure index to toggle fill: "))
+                    if 0 <= index < len(self._canvas._figures):
+                        self._canvas.toggle_fill(index)
+                    else:
+                        print("Некорректный индекс фигуры.")
                 except Exception as e:
                     print("Ошибка ввода:", e)
             elif command == "draw":
                 self._canvas.draw()
             elif command == "move":
                 try:
-                    index, dx, dy = map(int, input("Enter figure index, dx, dy: ").split())
-                    self._canvas.move_figure(index, dx, dy)
+                    index = int(input("Enter figure index to move: "))
+                    new_x, new_y = map(int, input("Enter new x and y coordinates: ").split())
+                    if 0 <= index < len(self._canvas._figures):
+                        self._canvas._figures[index].move(new_x, new_y)
+                    else:
+                        print("Некорректный индекс фигуры.")
                 except Exception as e:
                     print("Ошибка ввода:", e)
             elif command == "remove":
                 try:
                     index = int(input("Enter figure index to remove: "))
                     self._canvas.remove_figure(index)
+                    print(f"Figure at index {index} removed.")
                 except Exception as e:
                     print("Ошибка ввода:", e)
-            elif command == "undo":
-                self._canvas.undo()
-            elif command == "redo":
-                self._canvas.redo()
             elif command == "save":
                 filename = input("Enter filename: ").strip()
                 Storage.save(self._canvas, filename)
@@ -61,18 +77,7 @@ class PaintApp:
                 print("Unknown command.")
 
     def _print_help(self) -> None:
-        print("Commands:")
-        print("  add rectangle - Добавить прямоугольник")
-        print("  add circle    - Добавить круг")
-        print("  add triangle  - Добавить треугольник")
-        print("  move          - Переместить фигуру")
-        print("  remove        - Удалить фигуру")
-        print("  draw          - Отобразить полотно")
-        print("  undo          - Отмена действия")
-        print("  redo          - Повтор действия")
-        print("  save          - Сохранить полотно")
-        print("  load          - Загрузить полотно")
-        print("  exit          - Выход")
+        print("Commands: add rectangle, add circle, add triangle, fill, draw, move, remove, save, load, exit")
 
 if __name__ == "__main__":
     PaintApp().run()

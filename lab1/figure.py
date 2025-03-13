@@ -4,27 +4,24 @@ class Figure(ABC):
     def __init__(self, x: int, y: int) -> None:
         self._x = x
         self._y = y
+        self._filled = False  # По умолчанию фигура не заполнена
 
     @property
-    def x(self) -> int:
-        return self._x
+    def filled(self):
+        return self._filled
 
-    @x.setter
-    def x(self, value: int) -> None:
-        self._x = value
-
-    @property
-    def y(self) -> int:
-        return self._y
-
-    @y.setter
-    def y(self, value: int) -> None:
-        self._y = value
+    @filled.setter
+    def filled(self, value: bool):
+        self._filled = value
 
     @abstractmethod
     def draw(self, canvas) -> None:
         pass
 
-    def move(self, dx: int, dy: int) -> None:
-        self._x += dx
-        self._y += dy
+    @abstractmethod
+    def fill(self, canvas) -> None:
+        pass
+
+    def move(self, new_x: int, new_y: int) -> None:
+        self._x = new_x
+        self._y = new_y

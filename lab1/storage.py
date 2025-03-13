@@ -5,7 +5,7 @@ class Storage:
     @staticmethod
     def save(canvas, filename: str) -> None:
         data = []
-        for figure in canvas.figures:
+        for figure in canvas._figures:
             d = figure.__dict__.copy()
             d['_type'] = figure.__class__.__name__
             data.append(d)
@@ -21,13 +21,12 @@ class Storage:
                 for item in data:
                     ftype = item.pop('_type', None)
                     if ftype == 'Rectangle':
-                        figures.append(Rectangle(item['_x'], item['_y'], item['_width'], item['_height']))
+                        figures.append(Rectangle(**item))
                     elif ftype == 'Circle':
-                        figures.append(Circle(item['_x'], item['_y'], item['_radius']))
+                        figures.append(Circle(**item))
                     elif ftype == 'Triangle':
-                        figures.append(Triangle(item['_x'], item['_y'], item['_base'], item['_height']))
+                        figures.append(Triangle(**item))
             return figures
         except FileNotFoundError:
             print("Файл не найден.")
             return []
-
