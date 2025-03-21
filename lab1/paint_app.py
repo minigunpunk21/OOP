@@ -53,7 +53,7 @@ class PaintApp:
                     index = int(input("Enter figure index to move: "))
                     new_x, new_y = map(int, input("Enter new x and y coordinates: ").split())
                     if 0 <= index < len(self._canvas._figures):
-                        self._canvas._figures[index].move(new_x, new_y)
+                        self._canvas.move_figure(index, new_x, new_y)
                     else:
                         print("Некорректный индекс фигуры.")
                 except Exception as e:
@@ -73,11 +73,16 @@ class PaintApp:
                 figures = Storage.load(filename)
                 if figures:
                     self._canvas._figures = figures
+            elif command == "undo":
+                self._canvas.undo()
+            elif command == "redo":
+                self._canvas.redo()
             else:
                 print("Unknown command.")
 
     def _print_help(self) -> None:
-        print("Commands: add rectangle, add circle, add triangle, fill, draw, move, remove, save, load, exit")
+        print("Commands: add rectangle, add circle, add triangle, fill, draw, move, remove, save, load, undo, redo, exit")
 
 if __name__ == "__main__":
     PaintApp().run()
+
