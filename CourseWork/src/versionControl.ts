@@ -41,6 +41,14 @@ export class VersionControl {
         this.branch.checkoutBranch(name);
     }
 
+    rollback(): void {
+        this.repository.rollback();
+    }
+
+    getCommitHistory(): string[] {
+        return this.repository.getHistory();
+    }
+
     getCurrentBranch(): string {
         return this.branch.getCurrentBranch();
     }
