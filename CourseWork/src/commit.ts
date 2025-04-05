@@ -1,29 +1,17 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
-import { FileChange } from './fileChange'; // Добавьте этот импорт
-
-const execAsync = promisify(exec);
+import { Repository } from './repository';
+import { FileChange } from './fileChange';
 
 export class Commit {
-    constructor(private repoPath: string) {}
+    constructor(private repository: Repository) {}
 
-    async commit(message: string): Promise<void> {
-        await execAsync(`git commit -m "${message}"`, { cwd: this.repoPath });
-        console.log(`Committed changes: ${message}`);
-    }
-
-    async trackFileChanges(): Promise<FileChange[]> {
-        const { stdout } = await execAsync('git status --porcelain', { cwd: this.repoPath });
+    createCommit(message: string): void {
         const changes: FileChange[] = [];
 
-        stdout.split('\n').forEach(line => {
-            const changeType = line[0] === 'A' ? 'added' : line[0] === 'M' ? 'modified' : line[0] === 'D' ? 'deleted' : null;
-            if (changeType) {
-                const filePath = line.slice(3).trim();
-                changes.push(new FileChange(filePath, changeType));
-            }
-        });
+        for (const [filePath, content] of this.repository.getFiles()) {
+            changes.push(new FileChange(filePath, 'modified'));
+        }
 
-        return changes;
+        console.log(`Commit created: ${message}`);
+        console.log('Changes:', changes);
     }
 }

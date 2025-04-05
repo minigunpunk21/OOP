@@ -1,23 +1,33 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
+import { FileChange } from './fileChange';
 
 export class Repository {
-    constructor(private repoPath: string) {}
+    private files: Map<string, string> = new Map(); // Хранит состояние файлов
 
-    async init(): Promise<void> {
-        await execAsync('git init', { cwd: this.repoPath });
-        console.log(`Initialized empty Git repository in ${this.repoPath}`);
+    init(): void {
+        this.files.clear();
+        console.log('Initialized empty version control repository.');
     }
 
-    async getStatus(): Promise<string> {
-        const { stdout } = await execAsync('git status', { cwd: this.repoPath });
-        return stdout;
+    addFile(filePath: string, content: string): void {
+        this.files.set(filePath, content);
+        console.log(`Added file: ${filePath}`);
     }
 
-    async rollback(): Promise<void> {
-        await execAsync('git reset --hard HEAD', { cwd: this.repoPath });
-        console.log('Rolled back to the last commit');
+    modifyFile(filePath: string, content: string): void {
+        if (this.files.has(filePath)) {
+            this.files.set(filePath, content);
+            console.log(`Modified file: ${filePath}`);
+        }
+    }
+
+    deleteFile(filePath: string): void {
+        if (this.files.has(filePath)) {
+            this.files.delete(filePath);
+            console.log(`Deleted file: ${filePath}`);
+        }
+    }
+
+    getFiles(): Map<string, string> {
+        return this.files;
     }
 }

@@ -1,18 +1,32 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
+import { Repository } from './repository';
 
 export class Branch {
-    constructor(private repoPath: string) {}
+    private branches: string[] = [];
+    private currentBranch: string = 'main';
 
-    async create(name: string): Promise<void> {
-        await execAsync(`git branch ${name}`, { cwd: this.repoPath });
-        console.log(`Branch ${name} created`);
+    constructor(private repository: Repository) {
+        this.branches.push(this.currentBranch);
     }
 
-    async checkout(name: string): Promise<void> {
-        await execAsync(`git checkout ${name}`, { cwd: this.repoPath });
-        console.log(`Switched to branch ${name}`);
+    createBranch(name: string): void {
+        if (!this.branches.includes(name)) {
+            this.branches.push(name);
+            console.log(`Branch created: ${name}`);
+        } else {
+            console.log(`Branch ${name} already exists.`);
+        }
+    }
+
+    checkoutBranch(name: string): void {
+        if (this.branches.includes(name)) {
+            this.currentBranch = name;
+            console.log(`Switched to branch: ${name}`);
+        } else {
+            console.log(`Branch ${name} does not exist.`);
+        }
+    }
+
+    getCurrentBranch(): string {
+        return this.currentBranch;
     }
 }
