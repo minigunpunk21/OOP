@@ -1,24 +1,19 @@
-import { Repository } from '../models/Repository';
 import { Commit } from '../models/Commit';
-import { File } from '../models/File';
-import { Branch } from '../models/Branch';
+import { Repository } from '../models/Repository';
+import { hashString } from '../utils/hash';
 
-export class RepositoryService {
-    private repositories: Repository[] = [];
-
-    createRepository(name: string, path: string, ownerId: string): Repository {
-        const repository = new Repository(
-            (this.repositories.length + 1).toString(),
-            name,
-            path,
-            ownerId,
-            new Date()
+export class CommitService {
+    createCommit(repository: Repository, author: string, message: string): Commit {
+        const commitHash = hashString(message + Date.now().toString());
+        const commit = new Commit(
+            (repository.getCommits().length + 1).toString(),
+            commitHash,
+            repository.id,
+            author,
+            new Date(),
+            message
         );
-        this.repositories.push(repository);
-        return repository;
-    }
-
-    getRepository(id: string): Repository | undefined {
-        return this.repositories.find(repo => repo.id === id);
+        repository.addCommit(commit);
+        return commit;
     }
 }
