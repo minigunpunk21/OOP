@@ -1,0 +1,98 @@
+=== Ошибка при сохранении ===
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\ui\console_menu.py", line 36, in save_menu
+    self._editor.save_document(filepath=cmd[0], extension=cmd[1], format_=cmd[2])
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\editor.py", line 83, in save_document
+    docs = {'md': self.__doc, 'rtf': MdToRichTextAdapter(self.__doc), 'txt': MdToPlainTextAdapter(self.__doc)}
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 24, in __init__
+    self._basic_factory.create_text_component(self._convert_md_to_rich(md_document.get_text()))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 30, in _convert_md_to_rich
+    rtf_text = pypandoc.convert_text(text, 'rtf', 'md')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 94, in convert_text
+    return _convert_input(source, format, 'string', to, extra_args=extra_args,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 367, in _convert_input
+    _ensure_pandoc_path()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 802, in _ensure_pandoc_path
+    raise OSError("No pandoc was found: either install pandoc and add it\n"
+OSError: No pandoc was found: either install pandoc and add it
+to your PATH or or call pypandoc.download_pandoc(...) or
+install pypandoc wheels with included pandoc.
+
+=== Ошибка при сохранении ===
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\ui\console_menu.py", line 36, in save_menu
+    self._editor.save_document(filepath=cmd[0], extension=cmd[1], format_=cmd[2])
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\editor.py", line 83, in save_document
+    docs = {'md': self.__doc, 'rtf': MdToRichTextAdapter(self.__doc), 'txt': MdToPlainTextAdapter(self.__doc)}
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 24, in __init__
+    self._basic_factory.create_text_component(self._convert_md_to_rich(md_document.get_text()))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 30, in _convert_md_to_rich
+    rtf_text = pypandoc.convert_text(text, 'rtf', 'md')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 94, in convert_text
+    return _convert_input(source, format, 'string', to, extra_args=extra_args,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 367, in _convert_input
+    _ensure_pandoc_path()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 802, in _ensure_pandoc_path
+    raise OSError("No pandoc was found: either install pandoc and add it\n"
+OSError: No pandoc was found: either install pandoc and add it
+to your PATH or or call pypandoc.download_pandoc(...) or
+install pypandoc wheels with included pandoc.
+
+=== Ошибка при сохранении ===
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\ui\console_menu.py", line 36, in save_menu
+    self._editor.save_document(filepath=cmd[0], extension=cmd[1], format_=cmd[2])
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\editor.py", line 83, in save_document
+    docs = {'md': self.__doc, 'rtf': MdToRichTextAdapter(self.__doc), 'txt': MdToPlainTextAdapter(self.__doc)}
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 24, in __init__
+    self._basic_factory.create_text_component(self._convert_md_to_rich(md_document.get_text()))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\models\documents\richtext_document.py", line 30, in _convert_md_to_rich
+    rtf_text = pypandoc.convert_text(text, 'rtf', 'md')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 94, in convert_text
+    return _convert_input(source, format, 'string', to, extra_args=extra_args,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 367, in _convert_input
+    _ensure_pandoc_path()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\pypandoc\__init__.py", line 802, in _ensure_pandoc_path
+    raise OSError("No pandoc was found: either install pandoc and add it\n"
+OSError: No pandoc was found: either install pandoc and add it
+to your PATH or or call pypandoc.download_pandoc(...) or
+install pypandoc wheels with included pandoc.
+
+=== Ошибка при сохранении ===
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\ui\console_menu.py", line 36, in save_menu
+    self._editor.save_document(filepath=cmd[0], extension=cmd[1], format_=cmd[2])
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\editor.py", line 88, in save_document
+    self.__file_manager.save(docs[extension], filepath, serializer)
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\file_manager.py", line 20, in save
+    with open(filename, 'w') as file:
+         ^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'c:\\.json'
+
+=== Ошибка при сохранении ===
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\ui\console_menu.py", line 36, in save_menu
+    self._editor.save_document(filepath=cmd[0], extension=cmd[1], format_=cmd[2])
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\editor.py", line 88, in save_document
+    self.__file_manager.save(docs[extension], filepath, serializer)
+  File "C:\Users\User\Desktop\OOP\BSUIR_OOP\lab2\src\text_editor\services\file_manager.py", line 60, in save
+    self.__service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\googleapiclient\_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\googleapiclient\http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart returned "Google Drive API has not been used in project 778053491258 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/drive.googleapis.com/overview?project=778053491258 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.". Details: "[{'message': 'Google Drive API has not been used in project 778053491258 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/drive.googleapis.com/overview?project=778053491258 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.', 'domain': 'usageLimits', 'reason': 'accessNotConfigured', 'extendedHelp': 'https://console.developers.google.com'}]">
+
