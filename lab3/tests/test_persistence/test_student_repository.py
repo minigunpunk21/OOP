@@ -2,8 +2,8 @@ import os
 import unittest
 from unittest.mock import patch
 
-from lab3.src.domain.student import Student
-from lab3.src.infrastructure.student_repository import StudentRepository
+from src.domain.student import Student
+from src.infrastructure.student_repository import StudentRepository
 
 
 class TestStudentRepository(unittest.TestCase):

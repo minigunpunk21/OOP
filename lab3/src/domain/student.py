@@ -36,13 +36,13 @@ class Student(IStudent):
     @staticmethod
     def validate_name(name: str):
         if not isinstance(name, str):
-            raise ValueError("Student name must be a string")
+            raise ValueError("строка должна бвть")
         if not name:
-            raise ValueError("Student name cannot be empty")
+            raise ValueError("не пустой")
 
     @staticmethod
     def validate_grade(grade: int):
         if not isinstance(grade, int):
-            raise ValueError("Student grade must be a integer")
+            raise ValueError("оценка это число")
         if grade < 0 or grade > 10:
-            raise ValueError("Student grade must be between 0 and 10")
+            raise ValueError("0<оценка<10")

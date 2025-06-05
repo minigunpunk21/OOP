@@ -1,6 +1,6 @@
 import unittest
 
-from lab3.src.domain.student import Student
+from src.domain.student import Student
 
 
 class TestStudent(unittest.TestCase):
