@@ -28,8 +28,8 @@ class ConsoleUI(object):
 
     def run(self):
         while True:
-            print("\nCommands: add, view, edit, exit")
-            command = input("Enter command: ").strip().lower()
+            print("\nКоманды эвонакакие: add(добавить), view(прсмотор), edit(тик ток эдит, exit(выходи) ")
+            command = input("ВВОДИ КОМАНДУ(Enter command): ").strip().lower()
             if command in self.input_commands:
                 os.system("cls")
                 self.input_commands[command].execute()
